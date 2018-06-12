@@ -1,0 +1,116 @@
+package cn.wolfcode.wms.domain;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+public class OrderBill {
+    private Long id;
+
+    private String sn;
+
+    private Date vdate;
+
+    private Integer status;
+
+    private BigDecimal totalAmount;
+
+    private BigDecimal totalNumber;
+
+    private Date auditTime;
+
+    private Date inputTime;
+
+    private Long inputUser_id;
+
+    private Long auditor_id;
+
+    private Long supplier_id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSn() {
+        return sn;
+    }
+
+    public void setSn(String sn) {
+        this.sn = sn;
+    }
+
+    public Date getVdate() {
+        return vdate;
+    }
+
+    public void setVdate(Date vdate) {
+        this.vdate = vdate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public BigDecimal getTotalNumber() {
+        return totalNumber;
+    }
+
+    public void setTotalNumber(BigDecimal totalNumber) {
+        this.totalNumber = totalNumber;
+    }
+
+    public Date getAuditTime() {
+        return auditTime;
+    }
+
+    public void setAuditTime(Date auditTime) {
+        this.auditTime = auditTime;
+    }
+
+    public Date getInputTime() {
+        return inputTime;
+    }
+
+    public void setInputTime(Date inputTime) {
+        this.inputTime = inputTime;
+    }
+
+    public Long getInputUser_id() {
+        return inputUser_id;
+    }
+
+    public void setInputUser_id(Long inputUser_id) {
+        this.inputUser_id = inputUser_id;
+    }
+
+    public Long getAuditor_id() {
+        return auditor_id;
+    }
+
+    public void setAuditor_id(Long auditor_id) {
+        this.auditor_id = auditor_id;
+    }
+
+    public Long getSupplier_id() {
+        return supplier_id;
+    }
+
+    public void setSupplier_id(Long supplier_id) {
+        this.supplier_id = supplier_id;
+    }
+}

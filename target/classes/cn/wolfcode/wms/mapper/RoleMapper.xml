@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wolfcode.wms.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="cn.wolfcode.wms.domain.Role">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="sn" property="sn" />
+    <collection property="permissions" column="id" select="cn.wolfcode.wms.mapper.PermissionMapper.selectPermissionByRoleId">
+    </collection>
+    <collection property="menus" column="id" select="cn.wolfcode.wms.mapper.SystemMenuMapper.selectByRoleId">
+    </collection>
+  </resultMap>
+  <delete id="deleteByPrimaryKey">
+    delete from role
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into role (name, sn)
+    values (#{name}, #{sn})
+  </insert>
+  <insert id="insertRelation">
+    insert into role_permission(role_id,permission_id)values(#{roleId},#{permissionId})
+  </insert>
+  <insert id="insertMenuRelation">
+    insert into role_menu(role_id,menu_id)values(#{roleId},#{menuId})
+  </insert>
+  <delete id="deleteRelation">
+    delete from role_permission where role_id = #{roleId}
+  </delete>
+  <delete id="deleteMenuRelation">
+    delete  from role_menu where role_id = #{id}
+  </delete>
+  <update id="updateByPrimaryKey">
+    update role
+    set name = #{name},
+      sn = #{sn}
+    where id = #{id}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select id, name, sn
+    from role
+    where id = #{id}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, sn
+    from role
+  </select>
+
+  <select id="query4Count" resultType="int">
+    select count(*) from role
+  </select>
+  <select id="query4List" resultMap="BaseResultMap">
+    select id, name, sn from role limit #{start},#{pageSize}
+  </select>
+  <select id="selectRleByEmployeeId" resultType="Role">
+    select id, name, sn from role where id in(
+      select role_id from employee_role where employee_id = #{rleId}
+    )
+  </select>
+</mapper>
